@@ -1,7 +1,7 @@
-#!/usr/bin/python
-#-*- coding: utf-8 -*-
+from Chooser import Chooser
 
 class Row:
-    def __init__(self):
-        self.row = None
-
+    rows = 0
+    def __init__(self, view: set):
+        Row.rows += 1
+        self.view = [Chooser()]

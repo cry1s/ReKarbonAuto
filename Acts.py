@@ -1,12 +1,12 @@
-import pyautogui as pa
-
-
 class Act:
-    def __init__(self, category: str, command: str, name: str, attributes: set):
+    def __init__(self, category: str, name: str, command: str, attributes: set):
         self.category = category
         self.command = command
         self.name = name
         self.attributes = attributes
+
+    def view(self):
+        pass
 
 
 categories = [
@@ -29,7 +29,7 @@ commands = [
     ['pa.press({})', 'pa.typewrite({})', 'pa.keyDown({})', 'pa.keyUp({})', 'pa.hotkey({})'],
     ['pa.moveTo({})', 'pa.dragTo({})', 'pa.click({})', 'pa.mouseDown({})', 'pa.mouseUp({})', 'pa.scroll({})'],
     ['sleep(int({}))'],
-    ['for {} in range(int({}))', ],
+    ['for {} in range(int({})):', 'endfor'],
     ['{} = "{}"'],
 ]
 
@@ -52,8 +52,8 @@ attributes = [
         'clicks, x=None, y=None, pause=None, logScreenshot=None, _pause=True',
     ],
     ['', ],
-    ['', ],
+    ['', '', ],
     ['', ],
 ]
-# acts = [for category in range(len(categories))]
-pa.scroll()
+acts = [Act(categories[i], names[i][k], commands[i][k], attributes[i][k]) for i in range(len(categories)) for k in range(len(names[i]))]
+

@@ -1,11 +1,10 @@
+from tkinter import ttk
+
 import Row
 
 
-class Chooser:
-    def __init__(self, tochooselist: set, todolist: set, row: Row):
-        self.todo = todolist
-        self.tochoose = tochooselist
+class Chooser(ttk.Combobox):
+    def __init__(self, to_choose_list: list, to_do_list: list, row: Row, **kw):
+        super().__init__(row.page, value=to_choose_list, state='readonly', width=15, **kw)
+        self.to_do = to_do_list
         self.row = row.view
-
-    def grid(self):
-        pass

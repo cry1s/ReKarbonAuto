@@ -1,6 +1,6 @@
 import Acts
 from Page import Page
-
+from tkinter import *
 
 class Row:
     rows = 0
@@ -19,3 +19,12 @@ class Row:
 
     def append(self, value):
         self.view.append(value)
+
+    def grid(self, master, row):
+        for i in range(len(self.view)):
+            self.view[i].grid(master=master, row=row, sticky='w')
+
+    def update(self, master, row):
+        for i in range(len(self.view)):
+            self.view[i].grid_remove()
+        self.grid(master, row)

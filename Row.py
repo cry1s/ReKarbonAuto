@@ -1,14 +1,12 @@
 import Acts
-from Page import Page
 from tkinter import *
 
 class Row:
     rows = 0
 
-    def __init__(self, page: Page):
-        self.page = page
+    def __init__(self, master):
+        self.master = master
         Row.rows += 1
-        self.view = None
         self.view = []
 
     def __getitem__(self, item):
@@ -20,11 +18,14 @@ class Row:
     def append(self, value):
         self.view.append(value)
 
-    def grid(self, master, row):
+    def grid(self, row):
         for i in range(len(self.view)):
-            self.view[i].grid(master=master, row=row, sticky='w')
+            self.view[i].grid(row=row, column=i+1, sticky='w')
 
-    def update(self, master, row):
+    def grid_remove(self):
         for i in range(len(self.view)):
             self.view[i].grid_remove()
-        self.grid(master, row)
+
+    def update(self, row):
+        self.grid_remove()
+        self.grid(row)

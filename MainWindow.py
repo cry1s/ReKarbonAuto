@@ -24,7 +24,7 @@ class MainWindow:
             [Button(self.root, text="Добавить", command=self.new_row), Spinbox(self.root, from_=1, to=1000, width=5)],
             # row 0
             [Frame(master=self.root)],  # row 1
-            [Label(master=self.root, text="--------------------------------------------")]  # TODO
+            [Label(master=self.root, text="TODO")]  # TODO
         ]
         self.structure[0][0].grid_configure(row=0, column=0, columnspan=2, sticky='w')
         self.structure[1][0].grid_configure(row=1, column=1, rowspan=20, columnspan=7)
@@ -35,14 +35,16 @@ class MainWindow:
         self.root.mainloop()
 
     def new_row(self):
-        self.rows.append(Row(self.structure[1][0]))
+        if self.current_page != self.pages:
+            self.to_page(self.pages)
+        self.rows.append(Row(self.structure[1][0], self))
         self.pages = (len(self.rows) - 1) // 20 + 1
         if self.pages != self.current_page:
             self.frame_clean()
             self.current_page = self.pages
         row_at_page = (len(self.rows) - 1) % 20
-        self.rows[-1].append(Chooser(Acts.categories, [], self.rows[-1]))
-        self.rows[-1].grid(row=row_at_page)
+        self.rows[-1].append(Chooser(Acts.categories, self.rows[-1]))
+        self.rows[-1].grid()
         self.numbers.append(Label(master=self.root, text=str(len(self.numbers) + 1)))
         self.numbers[-1].grid(row=row_at_page + 1, column=0)
 
@@ -51,15 +53,17 @@ class MainWindow:
         for k in range(len(self.rows[(i - 1) * 20:i * 20])):
             self.rows[(i - 1) * 20 + k].grid_remove()
             self.numbers[(i - 1) * 20 + k].grid_remove()
+            print("cleared %s" % str((i - 1) * 20 + k))
 
     def to_page(self, page):
-        self.frame_clean()
-        if (page - 1) * 20 > len(self.rows):
+        if page <= 0:
+            messagebox.showerror("Ошибка", "Некорректное число")
+        elif (page - 1) * 20 >= len(self.rows) and page != 1:
             messagebox.showerror("Ошибка", "Превышено текущее количество страниц (" + str(self.pages) + ")")
-            self.to_page(self.current_page)
         else:
+            self.frame_clean()
             for i in range(len(self.rows[(page - 1) * 20:page * 20])):
-                self.rows[i + (page - 1) * 20].grid(row=i)
+                self.rows[i + (page - 1) * 20].grid()
                 self.numbers[i + (page - 1) * 20].grid()
                 self.current_page = page
 

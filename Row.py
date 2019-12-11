@@ -1,12 +1,12 @@
 import Acts
 from tkinter import *
 
-class Row:
-    rows = 0
 
-    def __init__(self, master):
+class Row:
+
+    def __init__(self, master, mw):
+        self.mw = mw  # MainWindow
         self.master = master
-        Row.rows += 1
         self.view = []
 
     def __getitem__(self, item):
@@ -18,14 +18,20 @@ class Row:
     def append(self, value):
         self.view.append(value)
 
-    def grid(self, row):
+    def grid(self):
+        row_at_page = (self.mw.rows.index(self)) % 20
         for i in range(len(self.view)):
-            self.view[i].grid(row=row, column=i+1, sticky='w')
+            if type(self.view) != Button:
+                self.view[i].grid(row=row_at_page, column=i + 1, sticky='w', pady=1)
+            else:
+                self.view[i].grid(row=row_at_page, column=i + 1, sticky='w')
 
     def grid_remove(self):
         for i in range(len(self.view)):
             self.view[i].grid_remove()
 
-    def update(self, row):
-        self.grid_remove()
-        self.grid(row)
+    def update(self):  # grid_remove() + grid(), but more effective
+        row_at_page = (self.mw.rows.index(self)) % 20
+        for i in range(len(self.view)):
+            self.view[i].grid_remove()
+            self.view[i].grid(row=row_at_page, column=i + 1, sticky='w')

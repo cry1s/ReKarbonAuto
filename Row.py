@@ -21,10 +21,10 @@ class Row:
     def grid(self):
         row_at_page = (self.mw.rows.index(self)) % 20
         for i in range(len(self.view)):
-            if type(self.view) != Button:
-                self.view[i].grid(row=row_at_page, column=i + 1, sticky='w', pady=1)
-            else:
+            if type(self.view[i]) != Label:
                 self.view[i].grid(row=row_at_page, column=i + 1, sticky='w')
+            else:
+                self.view[i].grid(row=row_at_page, column=i + 10, sticky='w')
 
     def grid_remove(self):
         for i in range(len(self.view)):
@@ -34,4 +34,7 @@ class Row:
         row_at_page = (self.mw.rows.index(self)) % 20
         for i in range(len(self.view)):
             self.view[i].grid_remove()
-            self.view[i].grid(row=row_at_page, column=i + 1, sticky='w')
+            if type(self.view[i]) != Label:
+                self.view[i].grid(row=row_at_page, column=i + 1, sticky='w')
+            else:
+                self.view[i].grid(row=row_at_page, column=i + 2, sticky='w')

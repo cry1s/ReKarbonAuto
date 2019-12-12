@@ -1,7 +1,4 @@
 from tkinter import ttk, Tk, Spinbox, Label, Entry, Button
-
-from PIL import ImageTk
-
 import Acts
 from Row import Row
 
@@ -31,8 +28,8 @@ class Chooser(ttk.Combobox):
         elif column == 1:
             category = Acts.categories.index(self.row[0].get())
             name = Acts.names[category].index(choosed)
-            self.row.append(
-                Button(self.row.master, text="опции", height=15, image=ImageTk.PhotoImage(file="res/parameters.png")))
+            self.row.append(Label(self.row.master, image=self.row.mw.img1))
+            self.row[-1].bind("<Button-1>", lambda *args: "hello")  # TODO
             self.row.update()
 
     def create_hard(self, choosed):

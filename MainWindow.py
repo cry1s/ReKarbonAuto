@@ -1,9 +1,10 @@
+import tkinter
 from tkinter import *
 from tkinter import messagebox
-
 import Acts
 from Chooser import Chooser
 from Row import Row
+from PIL import ImageTk, Image
 
 
 class MainWindow:
@@ -19,7 +20,8 @@ class MainWindow:
         self.current_page = 1
         self.rows = []
         self.numbers = []
-        # Window's widget setup
+        self.img1 = ImageTk.PhotoImage(Image.open("res\western.jpg"))
+        # Window's widgets setup
         self.structure = [
             [Button(self.root, text="Добавить", command=self.new_row), Spinbox(self.root, from_=1, to=1000, width=5)],
             # row 0

@@ -36,21 +36,21 @@ commands = [
 
 attributes = [
     [
-        'keys, presses=1, interval=0.0, pause=None, logScreenshot=None, _pause=True',
-        'message, interval=0.0, pause=None, logScreenshot=None, _pause=True',
-        'key, pause=None, logScreenshot=None, _pause=True',
-        'key, pause=None, logScreenshot=None, _pause=True',
+        'keys, presses=1, interval=0.0, pause=None, logScreenshot=None',
+        'message, interval=0.0, pause=None, logScreenshot=None',
+        'key, pause=None, logScreenshot=None',
+        'key, pause=None, logScreenshot=None',
         '',
     ],
     [
-        'x=None, y=None, duration=0.0, tween=linear, pause=None, logScreenshot=False, _pause=True',
-        'x=None, y=None, duration=0.0, tween=linear, button=PRIMARY, pause=None, logScreenshot=None, _pause=True, '
+        'x=None, y=None, duration=0.0, tween=linear, pause=None, logScreenshot=False',
+        'x=None, y=None, duration=0.0, tween=linear, button=PRIMARY, pause=None, logScreenshot=None'
         'mouseDownUp=True',
-        'x=None, y=None, clicks=1, interval=0.0, button=PRIMARY, duration=0.0, tween=linear, pause=None, '
+        'x=None, y=None, clicks=1, interval=0.0, button=PRIMARY, duration=0.0, tween=linear'
         'logScreenshot=None, _pause=True',
-        'x=None, y=None, button=PRIMARY, duration=0.0, tween=linear, pause=None, logScreenshot=None, _pause=True',
-        'x=None, y=None, button=PRIMARY, duration=0.0, tween=linear, pause=None, logScreenshot=None, _pause=True',
-        'clicks, x=None, y=None, pause=None, logScreenshot=None, _pause=True',
+        'x=None, y=None, button=PRIMARY, duration=0.0, tween=linear, pause=None, logScreenshot=None',
+        'x=None, y=None, button=PRIMARY, duration=0.0, tween=linear, pause=None, logScreenshot=None',
+        'clicks, x=None, y=None, pause=None, logScreenshot=None',
     ],
     ['', ],
     ['', '', ],

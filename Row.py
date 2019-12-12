@@ -8,6 +8,7 @@ class Row:
         self.mw = mw  # MainWindow
         self.master = master
         self.view = []
+        self.hard = False
 
     def __getitem__(self, item):
         return self.view[item]
@@ -24,7 +25,7 @@ class Row:
             if type(self.view[i]) != Label:
                 self.view[i].grid(row=row_at_page, column=i + 1, sticky='w')
             else:
-                self.view[i].grid(row=row_at_page, column=i + 10, sticky='w')
+                self.view[i].grid(row=row_at_page, column=i + 2, sticky='w')
 
     def grid_remove(self):
         for i in range(len(self.view)):

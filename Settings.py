@@ -1,22 +1,14 @@
-class Act:
-    def __init__(self, category: str, name: str, command: str, attributes: set):
-        self.category = category
-        self.command = command
-        self.name = name
-        self.attributes = attributes
-
-    def view(self):
-        pass
-
+imports = [
+    "import pyautogui as pa"
+]
 
 categories = [
     'Клавиатура',
     'Мышь',
     'Ждать',
     'Зациклить',
-    'Переменная',
+    'Строка Python',
 ]
-
 
 names = [
     ['Нажать', 'Написать', 'Зажать клавишу', 'Отжать клавишу', 'Сочетание клавиш', ],
@@ -31,7 +23,7 @@ commands = [
     ['pa.moveTo({})', 'pa.dragTo({})', 'pa.click({})', 'pa.mouseDown({})', 'pa.mouseUp({})', 'pa.scroll({})'],
     ['sleep(int({}))'],
     ['for {} in range(int({})):', 'endfor'],
-    ['{} = "{}"'],
+    ['{}'],
 ]
 
 attributes = [
@@ -56,5 +48,3 @@ attributes = [
     ['', '', ],
     ['', ],
 ]
-acts = [Act(categories[i], names[i][k], commands[i][k], attributes[i][k]) for i in range(len(categories)) for k in range(len(names[i]))]
-

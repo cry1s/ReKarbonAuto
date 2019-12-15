@@ -29,7 +29,7 @@ class MainWindow:
             [Label(master=self.root, text="TODO")]  # TODO
         ]
         self.structure[0][0].grid_configure(row=0, column=0, columnspan=2, sticky='w')
-        self.structure[1][0].grid_configure(row=1, column=1, rowspan=20, columnspan=7)
+        self.structure[1][0].grid_configure(row=1, column=1, rowspan=20, columnspan=9)
         self.structure[0][1].grid_configure(row=0, column=2, sticky='w')
         self.structure[2][0].grid_configure(row=21, column=1)
         self.structure[0][1].bind('<Return>', lambda event: self.to_page(int(self.structure[0][1].get())))

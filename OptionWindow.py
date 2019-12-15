@@ -4,10 +4,10 @@ from Row import Row
 
 
 class OptionWindow(Tk):
-    def __init__(self, attributes, chooser):
+    def __init__(self, attributes, row):
         super().__init__()
         self.title("Опции")
-        self.chooser = chooser
+        self.row = row
         self.attributes = attributes.split(', ')
         print(self.attributes)
         self.rows = []
@@ -25,7 +25,13 @@ class OptionWindow(Tk):
         self.rows[-1].grid_option()
 
     def to_main(self):
-        column = self.row.view.index(self.chooser) + 2
         self.row.grid_remove()
-        self.row.view = self.row.view[:column + 1]
-        self.row.append(Label(text="TODO"))  # TODO stop
+        self.row.view = self.row.view[:3]
+        text = ""
+        for i in range(len(self.rows)-1):
+            text += self.rows[i].to_main()
+        text = text[:-2]
+        self.row.append(Label(master=self.row.master, text=text))
+        self.row.update()
+        print(self.row.view)
+        self.destroy()

@@ -32,7 +32,7 @@ class Chooser(ttk.Combobox):
             category = Acts.categories.index(self.row[0].get())
             name = Acts.names[category].index(choosed)
             self.row.append(Label(self.row.master, image=self.row.mw.img1))
-            self.row[-1].bind("<Button-1>", lambda *args: OptionWindow(Acts.attributes[category][name], self).mainloop())
+            self.row[-1].bind("<Button-1>", lambda *args: OptionWindow(Acts.attributes[category][name], self.row).mainloop())
             self.row.update()
 
     def create_hard(self, choosed):

@@ -2,6 +2,9 @@ import tkinter
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog as fd
+
+import pyautogui
+
 import Settings
 from Chooser import Chooser
 from Row import Row
@@ -27,6 +30,8 @@ class MainWindow:
         self.structure = [
             [Button(self.root, text="Добавить", command=self.new_row),  # row 0
              Button(self.root, text="Сохранить как", command=self.coding),
+             Button(self.root, text="Справка",
+                    command=lambda *args: messagebox.showinfo("Справка по клавишам", pyautogui.KEY_NAMES)),
              Spinbox(self.root, from_=1, to=1000, width=5)],
             [Frame(master=self.root)],  # row 1
             [Label(master=self.root, text="TODO")]
@@ -35,6 +40,7 @@ class MainWindow:
         self.structure[1][0].grid_configure(row=1, column=1, rowspan=20, columnspan=9)
         self.structure[0][1].grid_configure(row=0, column=2, sticky='w')
         self.structure[0][2].grid_configure(row=0, column=3, sticky='w')
+        self.structure[0][2].grid_configure(row=0, column=4, sticky='w')
         self.structure[2][0].grid_configure(row=21, column=1)
         self.structure[0][1].bind('<Return>', lambda event: self.to_page(int(self.structure[0][1].get())))
         # Window start
@@ -92,7 +98,7 @@ class MainWindow:
                     if len(spaces) == 0:
                         self.error("spaces")
                     else:
-                        spaces = (len(spaces)-1)*" "
+                        spaces = (len(spaces) - 1) * " "
             else:
                 s += spaces * 4 + readed + "\n"
         f.write(s)

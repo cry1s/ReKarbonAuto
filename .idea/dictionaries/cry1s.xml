@@ -5,9 +5,11 @@
       <w>hotkey</w>
       <w>karbon</w>
       <w>pyautogui</w>
+      <w>readed</w>
       <w>screenshot</w>
       <w>tochoose</w>
       <w>tochooselist</w>
+      <w>xyxy</w>
     </words>
   </dictionary>
 </component>

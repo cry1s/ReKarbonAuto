@@ -1,5 +1,4 @@
 import Settings
-from tkinter import *
 
 
 class Row:

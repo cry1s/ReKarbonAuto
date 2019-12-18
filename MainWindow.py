@@ -93,13 +93,15 @@ class MainWindow:
             readed = self.rows[i].read()
             if readed[0] == "$":
                 if readed[1] == "o":
+                    s += spaces * 4 + readed[2:] + "\n"
                     spaces += " "
-                elif readed[2] == "c":
+                elif readed[1] == "c":
                     if len(spaces) == 0:
                         self.error("spaces")
                     else:
                         spaces = (len(spaces) - 1) * " "
             else:
+                print(spaces * 4 + readed + "\n")
                 s += spaces * 4 + readed + "\n"
         f.write(s)
         f.close()

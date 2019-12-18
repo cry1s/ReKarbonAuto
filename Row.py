@@ -21,9 +21,12 @@ class Row:
     def read(self):
         command = ""
         category = Settings.categories.index(self[0].get())
-        if not Settings.categories[category][0] is None and not category == 3:
+        if not Settings.categories[category][0] is None and not category == 3 and not category == 2:
             name = Settings.names[category].index(self[1].get())
-            atts = self[3].cget("text")
+            try:
+                atts = self[3].cget("text")
+            except IndexError:
+                atts = ""
             command = Settings.commands[category][name].format(atts)
         elif category == 2:
             command = Settings.commands[2][0].format(self[1].get())
@@ -31,6 +34,7 @@ class Row:
             name = self[1].get()
             if name == Settings.names[3][0]:
                 command = "$o"  # flag open cycle
+                command += Settings.commands[3][0].format("cycle"+str(self.mw.rows.index(self)), str(self[3].cget("text")[self[3].cget("text").index('=')+1:]))
             else:
                 command = "$c"  # flag close cycle
         elif category == 4:

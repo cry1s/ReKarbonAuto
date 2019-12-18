@@ -31,9 +31,10 @@ class Chooser(ttk.Combobox):
         elif column == 1:
             category = Settings.categories.index(self.row[0].get())
             name = Settings.names[category].index(choosed)
-            self.row.append(Label(self.row.master, image=self.row.mw.img1))
-            self.row[-1].bind("<Button-1>", lambda *args: OptionWindow(Settings.attributes[category][name], self.row).mainloop())
-            self.row.update()
+            if not (category == 2 and name == 1):
+                self.row.append(Label(self.row.master, image=self.row.mw.img1))
+                self.row[-1].bind("<Button-1>", lambda *args: OptionWindow(Settings.attributes[category][name], self.row).mainloop())
+                self.row.update()
 
     def create_hard(self, choosed):
         if choosed == "Строка Python":

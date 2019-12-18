@@ -1,5 +1,6 @@
 imports = [
-    "import pyautogui as pa"
+    "import pyautogui as pa",
+    "from time import sleep"
 ]
 
 categories = [
@@ -11,7 +12,7 @@ categories = [
 ]
 
 names = [
-    ['Нажать', 'Написать', 'Зажать клавишу', 'Отжать клавишу', 'Сочетание клавиш', ],
+    ['Нажать', 'Написать', 'Зажать клавишу', 'Разжать клавишу', 'Сочетание клавиш', ],
     ['Передвинуть в', 'Тащить в', 'Кликнуть', 'Зажать', 'Отжать', 'Колесико', ],
     [None],
     ['Открыть', 'Закрыть', ],
@@ -44,7 +45,8 @@ attributes = [
         'x=None, y=None, button=PRIMARY, duration=0.0, tween=linear, pause=None, logScreenshot=None',
         'clicks, x=None, y=None, pause=None, logScreenshot=None',
     ],
-    ['', ],
+    ['Количество повторов=3',
+     ''],
     ['', '', ],
     ['', ],
 ]

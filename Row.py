@@ -20,15 +20,12 @@ class Row:
 
     def read(self):
         command = ""
-        category = Settings.categories.index(self[0].get())
-        if not Settings.categories[category][0] is None and not category == 3 and not category == 2:
-            name = Settings.names[category].index(self[1].get())
-            try:
-                atts = self[3].cget("text")
-            except IndexError:
-                atts = ""
-            command = Settings.commands[category][name].format(atts)
-        elif category == 2:
+        try:
+            category = Settings.categories.index(self[0].get())
+        except ValueError:
+            self.mw.error("void")
+            category = 0
+        if category == 2:
             command = Settings.commands[2][0].format(self[1].get())
         elif category == 3:
             name = self[1].get()
@@ -39,7 +36,13 @@ class Row:
                 command = "$c"  # flag close cycle
         elif category == 4:
             command = self[1].get()
-        print(command)
+        elif not Settings.categories[category][0] is None and not category == 3 and not category == 2:
+            name = Settings.names[category].index(self[1].get())
+            try:
+                atts = self[3].cget("text")
+            except IndexError:
+                atts = ""
+            command = Settings.commands[category][name].format(atts)
         return command
 
     def grid(self):

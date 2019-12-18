@@ -13,7 +13,6 @@ class OptionWindow(Tk):
         self.resizable(False, False)
         self.row = row
         self.attributes = attributes.split(', ')
-        print(self.attributes)
         self.rows = []
         for i in range(len(self.attributes)):
             self.rows.append(Row(master=self, mw=self))

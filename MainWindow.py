@@ -81,6 +81,7 @@ class MainWindow:
     def coding(self):
         # noinspection PyAttributeOutsideInit
         self.file_name = fd.asksaveasfilename(filetypes=(("Python files", "*.py"),))
+        print(self.file_name+".!."+self.file_name[-3:].lower())
         if self.file_name[-3:].lower != ".py":
             self.file_name += ".py"
         f = open(self.file_name, 'w')
@@ -101,13 +102,16 @@ class MainWindow:
                     else:
                         spaces = (len(spaces) - 1) * " "
             else:
-                print(spaces * 4 + readed + "\n")
                 s += spaces * 4 + readed + "\n"
         f.write(s)
         f.close()
 
     def error(self, error):
-        pass
+        if error == "void":
+            messagebox.showwarning('Предупреждение', "Есть незаполненные строки")
+        elif error == "spaces":
+            messagebox.showerror("Ошибка", "Закрыт несуществующий цикл")
 
 
-a = MainWindow()
+if __name__ == '__main__':
+    a = MainWindow()

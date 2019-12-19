@@ -9,7 +9,8 @@ from Row import Row
 class OptionWindow(Tk):
     def __init__(self, attributes, row):
         super().__init__()
-        self.title("Опции")  # "x="+str(xy.x)+", y="+str(xy.y)
+        self.title("Опции")
+        self.iconbitmap(r'res\ico.ico')
         self.resizable(False, False)
         self.row = row
         self.attributes = attributes.split(', ')

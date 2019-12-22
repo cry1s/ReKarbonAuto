@@ -42,7 +42,10 @@ class Row:
                 atts = self[3].cget("text")
             except IndexError:
                 atts = ""
-            command = Settings.commands[category][name].format(atts)
+            if category == 0 and name == 4:
+                command = Settings.commands[category][name].format(atts[atts.index("=")+1:])
+            else:
+                command = Settings.commands[category][name].format(atts)
         return command
 
     def grid(self):

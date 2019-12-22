@@ -33,7 +33,7 @@ attributes = [
         'message, interval=0.0, pause=None, logScreenshot=None',
         'key, pause=None, logScreenshot=None',
         'key, pause=None, logScreenshot=None',
-        '',
+        'Клавиши',
     ],
     [
         'x=None, y=None, duration=0.0, tween=linear, pause=None, logScreenshot=False',
@@ -45,8 +45,7 @@ attributes = [
         'x=None, y=None, button=PRIMARY, duration=0.0, tween=linear, pause=None, logScreenshot=None',
         'clicks, x=None, y=None, pause=None, logScreenshot=None',
     ],
-    ['Количество повторов=3',
-     ''],
-    ['', '', ],
+    ['', ''],
+    ['Количество повторов=3', '', ],
     ['', ],
 ]

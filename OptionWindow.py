@@ -38,6 +38,8 @@ class OptionWindow(Tk):
         for i in range(len(self.rows) - 1):
             text += self.rows[i].to_main()
         text = text[:-2]
+        if text[0] == "=":
+            text = text[1:]
         self.row.append(Label(master=self.row.master, text=text))
         self.row.update()
         self.destroy()

@@ -79,11 +79,11 @@ class MainWindow:
 
     def coding(self):
         # noinspection PyAttributeOutsideInit
-        self.file_name = fd.asksaveasfilename(filetypes=(("Python files", "*.py"),))
+        self.file_name = fd.asksaveasfilename(filetypes=(("Python files", "*.pyw"),))
         if self.file_name == '':
             return
-        if self.file_name[-3:] != ".py":
-            self.file_name += ".py"
+        if self.file_name[-4:] != ".pyw":
+            self.file_name += ".pyw"
         f = open(self.file_name, 'w')
         s = ""
         for i in range(len(Settings.imports)):

@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='ReKarbonAuto',
     version='alpha',
-    packages=['ReKarbonAuto'],
+    packages=[],
     url='vk.com/karbonar',
     license='None',
     author='cry1s',
